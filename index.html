@@ -25,12 +25,14 @@
      <form class="card col-12 col-md-6 col-lg-4" id="frmReg" style="display:none;">
         <div class="card-body">
             <h1 class="text-center mb-4">Register Account</h1>
-            <label for="txtUsername" class="form-label">Personal Information</label>
-            <input id="txtFirstName" class="form-control mt-2" type="text" placeholder="First Name" aria-label="first name">
-            <input id="txtLastName" class="form-control mt-2" type="text" placeholder="Last Name" aria-label="last name">
-            <input id="txtUsername" class="form-control mt-4" type="email" placeholder="Email" aria-label="email">
+            <label for="txtFirstName" class="form-label">Personal Information</label>
+            <input id="txtFirstName" class="form-control" type="text" placeholder="First Name" aria-label="first name">
+            <input id="txtLastName" class="form-control mt-2 mb-3" type="text" placeholder="Last Name" aria-label="last name">
+            <label for="txtUsername" class="form-label">Account Information</label>
+            <input id="txtUsername" class="form-control" type="email" placeholder="Email" aria-label="email">
             <input id="txtPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="password">
-            <input id="txtAccessCode" class="form-control mt-2" type="text" placeholder="Code" aria-label="access code">
+            <hr/>
+            <input id="txtAccessCode" class="form-control mt-3" type="text" placeholder="Access Code" aria-label="access code">
             <button class="btn btn-primary col-12 mt-3" type="button" id="btnRegister">Register</button>
             <button class="btn btn-link col-12 mt2" type="button" id="btnSwapLogin">Back to Login</button>
         </div>
