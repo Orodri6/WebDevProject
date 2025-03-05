@@ -35,6 +35,7 @@ $('#btnLogin').on('click', function(){
 })
 
 $('#btnSwapRegister').on('click', function(){
-    $('#frmLogin').slideUp('slow')
-    $('#frmRegister').slideDown('fast')
+    $('#frmLogin').slideUp(function(){
+        $('#frmReg').slideDown()
+    })
 })
