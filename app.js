@@ -1,7 +1,7 @@
 $('#btnLogin').on('click', function(){
     const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
 
-    let strEmail = $('#txtLoginEmail').val()
+    let strEmail = $('#txtLoginUsername').val()
     let strPassword = $('#txtLoginPassword').val()
 
     let blnError = false
