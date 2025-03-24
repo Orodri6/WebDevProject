@@ -1,3 +1,4 @@
+//Function validates the login form
 $('#btnLogin').on('click', function(){
     const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
 
@@ -34,6 +35,7 @@ $('#btnLogin').on('click', function(){
     }
 })
 
+//Function validates the registration form
 $('#btnRegister').on('click', function(){
     const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
 
@@ -82,12 +84,14 @@ $('#btnRegister').on('click', function(){
     }
 })
 
+//Function to swap from login to registration form
 $('#btnSwapRegister').on('click', function(){
     $('#frmLogin').slideUp(function(){
         $('#frmReg').slideDown()
     })
 })
 
+//Function to swap from registration to login form
 $('#btnSwapLogin').on('click', function(){
     $('#frmReg').slideUp(function(){
         $('#frmLogin').slideDown()
