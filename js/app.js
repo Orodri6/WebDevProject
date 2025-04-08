@@ -97,3 +97,10 @@ $('#btnSwapLogin').on('click', function(){
         $('#frmLogin').slideDown()
     })
 })
+
+//Function to go to User Interface
+$('#btnLogin').on('click', function(){
+    $('#frmLogin').slideUp(function(){
+        $('#divStudentInterface').slideDown()
+    })
+})
