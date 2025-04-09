@@ -1,0 +1,109 @@
+$('#btnLogin').on('click', function(){
+    async function createSession(strUserEmail, strUserPassword){
+        try{
+            const objResponse = await fetch("http://127.0.0.1:5500/",{
+                method:'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({Email:strUserEmail,Password:strUserPassword})
+            })
+            
+            if(!objResponse.ok){
+                throw new Error('HTTP Error Status', objResponse.status)
+            }
+
+            const objData = await objResponse.json()
+            if(objData.SessionID){
+                //Sweetalert for success
+                Swal.fire({
+                    icon: "success",
+                    title: "Registration Successful",
+                    timer: 1500
+                  });
+                //Save the SessionID to sessionStorage
+                sessionStorage.setItem('SessionID', objData.SessionID)
+                //Clear our form
+                document.querySelector('#txtLoginUsername').value = ''
+                document.querySelector('#txtLoginPassword').value = ''
+                //Swap Login
+                document.querySelector('#frmLogin').style.display = 'none'
+                document.querySelector('#divDashboard').style.display = 'block'
+            } else{
+                //Sweetalert for failure
+                Swal.fire({
+                    title: "Login Failed!",
+                    icon: "error",
+                    timer: 1500
+                });
+                
+            }
+        } catch(objError){
+            console.log('Error fetching objData', objError)
+            //Create a Sweetalert for user indication failure
+            Swal.fire({
+                title: "Login Failed!",
+                icon: "error",
+                timer: 1500
+            })
+        }
+    }
+    const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+
+    let strEmail = $('#txtLoginUsername').val()
+    let strEmail = $('#txtLoginUsername').val().trim()
+    let strPassword = $('#txtLoginPassword').val()
+
+    let blnError = false
+
+
+    async function createUser(strUserEmail, strUserPassword, strUserFirstName, strUserLastName){
+        try{
+            const objResponse = await fetch("http://127.0.0.1:5500/index.html",{
+                method:'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({Email:strUserEmail,FirstName:strUserFirstName,LastName:strUserLastName,Password:strUserPassword})
+            })
+            
+            if(!objResponse.ok){
+                throw new Error('HTTP Error Status', objResponse.status)
+            }
+
+            const objData = await objResponse.json()
+            if(objData.Outcome){
+                //Sweetalert for success
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Registration Successful",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+                //Clear our form
+                document.querySelector('#txtUsername').value = ''
+                document.querySelector('#txtPassword').value = ''
+                document.querySelector('#txtFirstName').value = ''
+                document.querySelector('#txtLastName').value = ''
+                //Swap Login
+                document.querySelector('#frmRegister').style.display = 'none'
+                document.querySelector('#frmLogin').style.display = 'block'
+            } else{
+                //Sweetalert for failure
+                Swal.fire({
+                    title: "Registration Failed!",
+                    icon: "error",
+                    timer: 1500
+                });
+            }
+        } catch(objError){
+            console.log('Error fetching objData', objError)
+            //Create a Sweetalert for user indication failure 
+            Swal.fire({
+                title: "Registration Failed!",
+                icon: "error",
+                timer: 1500
+            })
+        }
+    }
