@@ -4,28 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback App</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/spacelab/bootstrap.min.css" integrity="sha384-F1AY0h4TrtJ8OCUQYOzhcFzUTxSOxuaaJ4BeagvyQL8N9mE4hrXjdDsNx249NpEc" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body class="bg-light">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lumen/bootstrap.min.css" integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous"><body class="bg-light">
 
     <!-- Main Div Tag-->
     <div class="d-flex min-vh-100 justify-content-center align-items-center">
 
     <!-- Login Form -->
-     <form class="card col-12 col-md-6 col-lg-4" id="frmLogin">
+    <form class="card col-12 col-md-6 col-lg-4" id="frmLogin">
         <div class="card-body">
-            <h1 class="text-center mb-4">Login</h1>
+            <h1 class="text-center mb-2">Welcome!</h1>
+            <p class="text-center">This is an appliation that allows to post and review feedback from fellow peers.</p>
+            <div class="d-flex justify-content-between">
+                <img src="css/images/teacher.png" alt="Teacher" class="img-fluid col-5 mb-3">
+                <img src="css/images/student.png" alt="Student" class="img-fluid col-5 mb-3">
+            </div>
+
+            <div class="d-flex justify-content-between">
+            <button class="btn btn-dark col-5" type="button" id="btnChoTeacher" aria-label="Login as a teacher">I'm A Teacher</button>
+            <button class="btn btn-dark col-5" type="button" id="btnChoStudent" aria-label="Login as a student">I'm A Student</button>
+            </div>
+            
+        </div>
+     </form>
+    
+     <!--Student Login Form -->
+     <form class="card col-12 col-md-6 col-lg-4" id="frmTeacherLogin" style="display:none;">
+        <div class="card-body">
+            <h1 class="text-center mb-4">Teacher Login</h1>
+            <input id="txtTeacherLoginUsername" class="form-control" type="email" placeholder="Email" aria-label="email">
+            <input id="txtTeacherLoginPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="password">
+            <input id="txtCode" class="form-control mt-2" type="text" placeholder="Access Code" aria-label="teacher code">
+
+            <div class="text-right">
+                <button class="btn btn-link col-5" type="button" id="btnTeacherReset" aria-label="Click to reset password">Forgot Password</button>
+            </div>
+            <button class="btn btn-dark col-12 mt-3" type="button" id="btnLogin" aria-label="Log In">Log In</button>
+            <button class="btn btn-link col-12 mt-1 dark" type="button" id="btnSwapRegister" aria-label="Need an account?">Need an account?</button>
+            </div>
+     </form>
+
+    <!--Student Login Form -->
+     <form class="card col-12 col-md-6 col-lg-4" id="frmStudentLogin" style="display:none;">
+        <div class="card-body">
+            <h1 class="text-center mb-4">Student Login</h1>
             <input id="txtLoginUsername" class="form-control" type="email" placeholder="Email" aria-label="email">
             <input id="txtLoginPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="password">
 
             <div class="text-right">
                 <button class="btn btn-link col-5" type="button" id="btnReset" aria-label="Click to reset password">Forgot Password</button>
             </div>
-
-            <button class="btn btn-primary col-12 mt-3" type="button" id="btnLogin" aria-label="Log In">Log In</button>
-            <button class="btn btn-link col-12 mt-1" type="button" id="btnSwapRegister" aria-label="Need an account?">Need an account?</button>
-        </div>
+            <button class="btn btn-dark col-12 mt-3" type="button" id="btnLogin" aria-label="Log In">Log In</button>
+            <button class="btn btn-link col-12 mt-1 dark" type="button" id="btnSwapRegister" aria-label="Need an account?">Need an account?</button>
+            </div>
      </form>
 
      <!-- Registration Form -->
