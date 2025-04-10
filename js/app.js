@@ -84,23 +84,44 @@ $('#btnRegister').on('click', function(){
     }
 })
 
-//Function to swap from login to registration form
-$('#btnSwapRegister').on('click', function(){
+//Function to swap from login to Teacher ogin form
+$('#btnChoTeacher').on('click', function(){
     $('#frmLogin').slideUp(function(){
-        $('#frmReg').slideDown()
+        $('#frmTeacherLogin').slideDown()
     })
 })
 
-//Function to swap from registration to login form
-$('#btnSwapLogin').on('click', function(){
-    $('#frmReg').slideUp(function(){
-        $('#frmLogin').slideDown()
+//Function to go to Teacher Interface
+$('#btnTeacherLogin').on('click', function(){
+    $('#frmTeacherLogin').slideUp(function(){
+        $('#divTeacherInterface').slideDown()
     })
 })
 
 //Function to go to User Interface
-$('#btnLogin').on('click', function(){
+$('#btnTeacherRegister').on('click', function(){
+    $('#frmTeacherLogin').slideUp(function(){
+        $('#frmRegister').slideDown()
+    })
+})
+
+//Function to swap from registration to Student login form
+$('#btnChoStudent').on('click', function(){
     $('#frmLogin').slideUp(function(){
+        $('#frmStudentLogin').slideDown()
+    })
+})
+
+//Function to go to Teacher Interface
+$('#btnStudentLogin').on('click', function(){
+    $('#frmStudentLogin').slideUp(function(){
         $('#divStudentInterface').slideDown()
+    })
+})
+
+//Function to go to User Interface
+$('#btnStudentRegister').on('click', function(){
+    $('#frmStudentLogin').slideUp(function(){
+        $('#frmRegister').slideDown()
     })
 })

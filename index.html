@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback App</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lumen/bootstrap.min.css" integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous"><body class="bg-light">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lumen/bootstrap.min.css" integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
 
     <!-- Main Div Tag-->
     <div class="d-flex min-vh-100 justify-content-center align-items-center">
@@ -23,11 +27,10 @@
             <button class="btn btn-dark col-5" type="button" id="btnChoTeacher" aria-label="Login as a teacher">I'm A Teacher</button>
             <button class="btn btn-dark col-5" type="button" id="btnChoStudent" aria-label="Login as a student">I'm A Student</button>
             </div>
-            
         </div>
      </form>
     
-     <!--Student Login Form -->
+     <!--Teacher Login Form -->
      <form class="card col-12 col-md-6 col-lg-4" id="frmTeacherLogin" style="display:none;">
         <div class="card-body">
             <h1 class="text-center mb-4">Teacher Login</h1>
@@ -38,8 +41,8 @@
             <div class="text-right">
                 <button class="btn btn-link col-5" type="button" id="btnTeacherReset" aria-label="Click to reset password">Forgot Password</button>
             </div>
-            <button class="btn btn-dark col-12 mt-3" type="button" id="btnLogin" aria-label="Log In">Log In</button>
-            <button class="btn btn-link col-12 mt-1 dark" type="button" id="btnSwapRegister" aria-label="Need an account?">Need an account?</button>
+            <button class="btn btn-dark col-12 mt-3" type="button" id="btnTeacherLogin" aria-label="Log In">Log In</button>
+            <button class="btn btn-link col-12 mt-1 dark" type="button" id="btnTeacherRegister" aria-label="Need an account?">Need an account?</button>
             </div>
      </form>
 
@@ -47,19 +50,19 @@
      <form class="card col-12 col-md-6 col-lg-4" id="frmStudentLogin" style="display:none;">
         <div class="card-body">
             <h1 class="text-center mb-4">Student Login</h1>
-            <input id="txtLoginUsername" class="form-control" type="email" placeholder="Email" aria-label="email">
-            <input id="txtLoginPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="password">
+            <input id="txtStudentLoginUsername" class="form-control" type="email" placeholder="Email" aria-label="email">
+            <input id="txtStudentLoginPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="password">
 
             <div class="text-right">
                 <button class="btn btn-link col-5" type="button" id="btnReset" aria-label="Click to reset password">Forgot Password</button>
             </div>
-            <button class="btn btn-dark col-12 mt-3" type="button" id="btnLogin" aria-label="Log In">Log In</button>
-            <button class="btn btn-link col-12 mt-1 dark" type="button" id="btnSwapRegister" aria-label="Need an account?">Need an account?</button>
+            <button class="btn btn-dark col-12 mt-3" type="button" id="btnStudentLogin" aria-label="Log In">Log In</button>
+            <button class="btn btn-link col-12 mt-1 dark" type="button" id="btnStudentRegister" aria-label="Need an account?">Need an account?</button>
             </div>
      </form>
 
      <!-- Registration Form -->
-     <form class="card col-12 col-md-6 col-lg-4" id="frmReg" style="display:none;">
+     <form class="card col-12 col-md-6 col-lg-4" id="frmRegister" style="display:none;">
         <div class="card-body">
             <h1 class="text-center mb-1">Create a Account</h1>
             <h6 class="text-center mb-4">Please fill out the form below</h6>
@@ -93,8 +96,17 @@
 
         </div> 
 
-  
-     
+        <!-- Teacher Interface -->
+        <div class="card col-12 col-md-6 col-lg-4" id="divTeacherInterface" style="display:none;">
+
+            <!-- Info -->
+            <div class="card-body d-flex flex-column justify-content-between">
+
+            <h1 class="text-center mb-1">Teacher Interface</h1>
+
+            </div>
+
+        </div> 
 
     </div>
 
