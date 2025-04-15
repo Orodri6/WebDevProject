@@ -44,3 +44,41 @@ body {
   #frmStudentLogin {
     position: relative; 
   }
+
+#divTeacherInterface {
+    position: fixed;
+    left: 0;
+    width: 20vw;
+    min-height: 100vh;
+    background-color: #f5c2f0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 2rem;
+}
+
+#divTeacherInterface li {   
+    list-style: none;
+}
+
+
+#divTeacherInterface .container {
+    position: absolute;
+    right: 0;
+    width: 80vw;
+    height: 100vh;
+}
+
+#divTeacherInterface .container .header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80vw;
+    height: 10vh;
+    background: #f1e2fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
