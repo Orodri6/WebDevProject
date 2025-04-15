@@ -112,36 +112,52 @@
     </form>
 
     <!-- Teacher Interface -->
-        <div class="col-12 col-md-6 col-lg-4" id="divTeacherInterface" style="display:none;">
-
+    <div id="divTeacherInterface" class="container-fluid" style="display:none;">
+        <div class="row">
+          <div class="col-12 col-md-4" id="teacherSidebar"> 
             <div>
-                <h1 class="mb-3 text-center">Teacher Interface</h1>
+              <h1 class="mb-3 text-center">Teacher Interface</h1>
             </div>
         
-            <ul>
-                <li class="mb-2">
-                    <button class="btn btn-dark col-12" type="button" id="btnViewFeedback" aria-label="Click to view feedback">View Feedback</button>
-                </li>
-                <li class="mb-2">
-                    <button class="btn btn-dark" type="button" id="btnPostFeedback" aria-label="Click to post feedback">Post Feedback</button>
-                </li>
-                <li class="mb-2">
-                    <button class="btn btn-dark" type="button" id="btnViewStudents" aria-label="Click to view students">View Students</button>
-                </li>
+            <ul class="p-0">
+              <li class="mb-2">
+                <button class="btn btn-dark col-12" type="button" id="btnViewFeedback" aria-label="Click to view feedback">View Feedback</button>
+              </li>
+              <li class="mb-2">
+                <button class="btn btn-dark" type="button" id="btnPostFeedback" aria-label="Click to post feedback">Post Feedback</button>
+              </li>
+              <li class="mb-2">
+                <button class="btn btn-dark" type="button" id="btnViewStudents" aria-label="Click to view students">View Students</button>
+              </li>
             </ul>
-
-            <div id="teacherContainer">
-                <div class="justify-content-center align-items-center"id="teacherHeader">
-                    <div class="d-flex justify-content-end align-items-center" id="teacherNav">
-                        <div id="teacherUser">
-                            <button class="btn btn-dark">Add New Group</button>
-                        </div>
-                    </div>
-                </div>
+          </div>
+      
+          <!-- Main content area (right side) -->
+          <div class="col-12 col-md-8" id="teacherContainer">
+            <!-- Header -->
+            <div class="d-flex justify-content-end align-items-center" id="teacherHeader">
+              <div id="teacherUser">
+                <button class="btn btn-dark">Add New Group</button>
+              </div>
             </div>
-
-    
-        </div> 
+      
+            <!-- Cards Area -->
+            <div id="teacherContent" class="container mt-5 pt-4">
+              <div class="row justify-content-center">
+                <div class="card col-12 col-md-10 col-lg-8">
+                  <div class="card-body">
+                    <h1 class="text-center mb-1">Feedback</h1>
+                    <h6 class="text-center mb-4">Please fill out the form below</h6>
+                    <label for="txtTeacherFeedback" class="form-label">Feedback</label>
+                    <textarea id="txtTeacherFeedback" class="form-control" rows="3" placeholder="Enter feedback"></textarea>
+                    <button class="btn btn-primary col-12 mt-3" type="button" id="btnSubmitFeedback">Submit Feedback</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
             <!-- Student Interface -->
         <div class="card col-12 col-md-6 col-lg-4" id="divStudentInterface" style="display:none;">
