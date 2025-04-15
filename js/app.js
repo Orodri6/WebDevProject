@@ -103,7 +103,7 @@ $('#btnTeacherGoHome').on('click', function(){
 //Function to go to Teacher Interface
 $('#btnTeacherLogin').on('click', function(){
     $('#frmTeacherLogin').slideUp(function(){
-        $('#divTeacherInterface').slideDown()
+        $('#divTeacherInterface').css('display', 'block')
     })
 })
 
