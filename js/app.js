@@ -84,10 +84,19 @@ $('#btnRegister').on('click', function(){
     }
 })
 
-//Function to swap from login to Teacher ogin form
+//Teacher Buttons
+
+//Function to swap from login to Teacher login form
 $('#btnChoTeacher').on('click', function(){
     $('#frmLogin').slideUp(function(){
         $('#frmTeacherLogin').slideDown()
+    })
+})
+
+//Function to swap from Teacher login back to home
+$('#btnTeacherGoHome').on('click', function(){
+    $('#frmTeacherLogin').slideUp(function(){
+        $('#frmLogin').slideDown()
     })
 })
 
@@ -101,14 +110,37 @@ $('#btnTeacherLogin').on('click', function(){
 //Function to go to User Interface
 $('#btnTeacherRegister').on('click', function(){
     $('#frmTeacherLogin').slideUp(function(){
-        $('#frmRegister').slideDown()
+        $('#frmTeacherRegister').slideDown()
     })
 })
+
+//Function to go to Teacher login by clicking register
+$('#btnTeacherRegistered').on('click', function(){
+    $('#frmTeacherRegister').slideUp(function(){
+        $('#frmTeacherLogin').slideDown()
+    })
+})
+
+//Function to go to Teacher login by clicking login
+$('#btnTeacherSwapLogin').on('click', function(){
+    $('#frmTeacherRegister').slideUp(function(){
+        $('#frmTeacherLogin').slideDown()
+    })
+})
+
+//Student Buttons
 
 //Function to swap from registration to Student login form
 $('#btnChoStudent').on('click', function(){
     $('#frmLogin').slideUp(function(){
         $('#frmStudentLogin').slideDown()
+    })
+})
+
+//Function to swap from Student login back to home
+$('#btnStudentGoHome').on('click', function(){
+    $('#frmStudentLogin').slideUp(function(){
+        $('#frmLogin').slideDown()
     })
 })
 
@@ -122,6 +154,20 @@ $('#btnStudentLogin').on('click', function(){
 //Function to go to User Interface
 $('#btnStudentRegister').on('click', function(){
     $('#frmStudentLogin').slideUp(function(){
-        $('#frmRegister').slideDown()
+        $('#frmStudentRegister').slideDown()
+    })
+})
+
+//Function to go to Student login by clicking register
+$('#btnStudentRegistered').on('click', function(){
+    $('#frmStudentRegister').slideUp(function(){
+        $('#frmStudentLogin').slideDown()
+    })
+})
+
+//Function to go to Student login by clicking login
+$('#btnStudentSwapLogin').on('click', function(){
+    $('#frmStudentRegister').slideUp(function(){
+        $('#frmStudentLogin').slideDown()
     })
 })
