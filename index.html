@@ -116,32 +116,33 @@
         <div class="row">
           <div class="col-12 col-md-3" id="teacherSidebar"> 
             <div>
-              <h1 class="mb-3 text-center">Teacher Interface</h1>
+              <h1 class="mb-4 text-center text-light">Dashboard</h1>
             </div>
         
             <ul class="p-0">
-              <li class="mb-2">
+              <li class="mb-4">
                 <button class="btn btn-dark col-12" type="button" id="btnViewFeedback" aria-label="Click to view feedback">View Feedback</button>
               </li>
-              <li class="mb-2">
-                <button class="btn btn-dark" type="button" id="btnPostFeedback" aria-label="Click to post feedback">Post Feedback</button>
+              <li class="mb-4">
+                <button class="btn btn-dark col-12" type="button" id="btnViewGroups" aria-label="Click to view groups">View Groups</button>
               </li>
               <li class="mb-2">
-                <button class="btn btn-dark" type="button" id="btnViewStudents" aria-label="Click to view students">View Students</button>
+                <button class="btn btn-dark col-12" type="button" id="btnViewStudents" aria-label="Click to view students">View Students</button>
               </li>
             </ul>
           </div>
       
-          <!-- Main content area (right side) -->
+          <!-- Main content-->
           <div class="col-12 col-md-9 p-0" id="teacherContainer">
             <!-- Header -->
             <div class="d-flex justify-content-end align-items-center" id="teacherHeader">
               <div id="teacherUser">
-                <button class="btn btn-dark">Add New Group</button>
+                <button class="btn btn-dark mr-3" type="button" id="btnAddGroup" aria-label="Click to add a new group">Add New Group</button>
+                <button class="btn btn-dark" type="button" id="btnVeiwProfile" aria-label="Click to view your profile">My Profile</button>
               </div>
             </div>
       
-            <!-- Cards Area -->
+            <!-- Cards -->
             <div id="teacherContent" class="container mt-5 pt-4">
               <div class="row justify-content-center">
                 <div class="card col-12 col-md-10 col-lg-8">
@@ -150,11 +151,12 @@
                     <h6 class="text-center mb-4">Please fill out the form below</h6>
                     <label for="txtTeacherFeedback" class="form-label">Feedback</label>
                     <textarea id="txtTeacherFeedback" class="form-control" rows="3" placeholder="Enter feedback"></textarea>
-                    <button class="btn btn-primary col-12 mt-3" type="button" id="btnSubmitFeedback">Submit Feedback</button>
+                    <button class="btn btn-dark col-12 mt-3" type="button" id="btnSubmitFeedback">Submit Feedback</button>
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
