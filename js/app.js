@@ -181,3 +181,19 @@ $('#btnStudentSwapLogin').on('click', function(){
         $('#frmStudentLogin').slideDown()
     })
 })
+
+//Function to go to Student Profile
+$('#btnStudentProfile').on('click', function(){
+    $('#divStudentInterface').slideUp(function(){
+        $('#divStudentProfile').slideDown()
+    })
+})
+
+//Function to go to Student Login from Profile
+$('#btnStudentLogout').on('click', function(){
+    $('#divStudentProfile').slideUp(function(){
+        $('#frmStudentLogin').slideDown()
+    })
+})
+
+
