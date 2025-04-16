@@ -159,23 +159,53 @@
         </div>
       </div>
     
-            <!-- Student Interface -->
-        <div class="card col-12 col-md-6 col-lg-4" id="divStudentInterface" style="display:none;">
-    
-            <!-- Info -->
-            <div class="card-body d-flex flex-column justify-content-between">
-    
-            <h1 class="text-center mb-1">Student Interface</h1>
-            <h6 class="text-center mb-4">Please fill out the form below</h6>
-            <label for="txtStudentName" class="form-label">Student Information</label>
-            <input id="txtStudentName" class="form-control" type="text" placeholder="Student Name" aria-label="student name">
-            <input id="txtStudentEmail" class="form-control mt-2 mb-3" type="email" placeholder="Student Email" aria-label="student email">
-            <button class="btn btn-primary col-12 mt-3" type="button" id="btnSubmitFeedback">Submit Feedback</button>
-    
+      <!-- Student Interface -->
+      <div id="divStudentInterface" class="container-fluid" style="display:none;">
+        <div class="row">
+          <div class="col-12 col-md-3" id="studentSidebar"> 
+            <div>
+              <h1 class="mb-3 text-center text-light">Student Interface</h1>
             </div>
-    
-        </div> 
-
+        
+            <ul class="p-0">
+              <li class="mb-2">
+                <button class="btn btn-dark col-12" type="button" id="btnViewFeedback" aria-label="Click to view feedback">View Feedback</button>
+              </li>
+              <li class="mb-2">
+                <button class="btn btn-dark col-12" type="button" id="btnPostFeedback" aria-label="Click to post feedback">Post Feedback</button>
+              </li>
+              <li class="mb-2">
+                <button class="btn btn-dark col-12" type="button" id="btnViewStudents" aria-label="Click to view students">View Students</button>
+              </li>
+            </ul>
+          </div>
+      
+          <!-- Main content area (right side) -->
+          <div class="col-12 col-md-9 p-0" id="studentContainer">
+            <!-- Header -->
+            <div class="d-flex justify-content-end align-items-center" id="studentHeader">
+              <div id="studentUser">
+                <button class="btn btn-dark">Add New Group</button>
+              </div>
+            </div>
+      
+            <!-- Cards Area -->
+            <div id="studentContent" class="container mt-5 pt-4">
+              <div class="row justify-content-center">
+                <div class="card col-12 col-md-10 col-lg-8">
+                  <div class="card-body">
+                    <h1 class="text-center mb-1">Feedback</h1>
+                    <h6 class="text-center mb-4">Please fill out the form below</h6>
+                    <label for="txtStudentFeedback" class="form-label">Feedback</label>
+                    <textarea id="txtStudentFeedback" class="form-control" rows="3" placeholder="Enter feedback"></textarea>
+                    <button class="btn btn-primary col-12 mt-3" type="button" id="btnSubmitFeedback">Submit Feedback</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
 

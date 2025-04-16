@@ -52,7 +52,7 @@ body {
 
 #divTeacherInterface #teacherSidebar{
     min-height: 100vh;
-    background-color: #f5c2f0;
+    background-color: #212330;
     padding: 2rem;
 }
 
@@ -64,7 +64,30 @@ body {
 
 #divTeacherInterface #teacherContainer #teacherHeader {
     height: 10vh;
-    background: #f1e2fd;
+    background: #15151c;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 1rem;
+}
+
+#divStudentInterface li{
+  list-style: none;
+}
+
+#divStudentInterface #studentSidebar{
+  min-height: 100vh;
+  background-color: #212330;
+  padding: 2rem;
+}
+
+#divStudentInterface #studentContainer {
+  position: relative;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#divStudentInterface #studentContainer #studentHeader {
+  height: 10vh;
+  background: #15151c;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
 }

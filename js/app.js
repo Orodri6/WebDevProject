@@ -161,10 +161,10 @@ $('#btnStudentGoHome').on('click', function(){
     })
 })
 
-//Function to go to Teacher Interface
+//Function to go to Student Interface
 $('#btnStudentLogin').on('click', function(){
     $('#frmStudentLogin').slideUp(function(){
-        $('#divStudentInterface').slideDown()
+        $('#divStudentInterface').css('display', 'block')
     })
 })
 
