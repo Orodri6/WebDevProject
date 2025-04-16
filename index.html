@@ -164,19 +164,24 @@
         <div class="row">
           <div class="col-12 col-md-3" id="studentSidebar"> 
             <div>
-              <h1 class="mb-3 text-center text-light">Student Interface</h1>
+              <h1 class="mb-3 text-center text-light">Dashboard</h1>
             </div>
         
             <ul class="p-0">
-              <li class="mb-2">
-                <button class="btn btn-dark col-12" type="button" id="btnViewFeedback" aria-label="Click to view feedback">View Feedback</button>
-              </li>
-              <li class="mb-2">
+              <li class="mt-4 mb-4">
                 <button class="btn btn-dark col-12" type="button" id="btnPostFeedback" aria-label="Click to post feedback">Post Feedback</button>
               </li>
-              <li class="mb-2">
-                <button class="btn btn-dark col-12" type="button" id="btnViewStudents" aria-label="Click to view students">View Students</button>
+              <li class="mb-4">
+                <button class="btn btn-dark col-12" type="button" id="btnViewFeedback" aria-label="Click to view feedback">View Feedback</button>
               </li>
+              <li class="mb-4">
+                <button class="btn btn-dark col-12" type="button" id="btnCreateReview" aria-label="Click to create review">Create Review</button>
+              </li>
+              <li class="mb-4">
+                <button class="btn btn-dark col-12" type="button" id="btnViewStudents" aria-label="Click to view students">View Group Members</button>
+              </li>
+              <li class="mb-4">
+                <button class="btn btn-dark col-12" type="button" id="btnReport" aria-label="Click to view report">View Report</button>
             </ul>
           </div>
       
@@ -185,27 +190,48 @@
             <!-- Header -->
             <div class="d-flex justify-content-end align-items-center" id="studentHeader">
               <div id="studentUser">
-                <button class="btn btn-dark">Add New Group</button>
+                <button class="btn btn-dark" id="btnStudentProfile">My Profile</button>
               </div>
             </div>
       
             <!-- Cards Area -->
             <div id="studentContent" class="container mt-5 pt-4">
               <div class="row justify-content-center">
+
                 <div class="card col-12 col-md-10 col-lg-8">
                   <div class="card-body">
                     <h1 class="text-center mb-1">Feedback</h1>
                     <h6 class="text-center mb-4">Please fill out the form below</h6>
+                    <label for="txtChooseStudent" class="form-label">Type Student's Name</label>
+                    <input id="txtChooseStudent" class="form-control mb-2" type="text" placeholder="Enter student name" aria-label="Enter student name">
                     <label for="txtStudentFeedback" class="form-label">Feedback</label>
                     <textarea id="txtStudentFeedback" class="form-control" rows="3" placeholder="Enter feedback"></textarea>
-                    <button class="btn btn-primary col-12 mt-3" type="button" id="btnSubmitFeedback">Submit Feedback</button>
+                    <select id="cboPrivacy" class="form-control mt-3 mb-2" placeholder="Choose Your Location" aria-label="Choose your location">
+                      <option value="">Choose Your Privacy Option</option>
+                      <option value="home">Private</option>
+                      <option value="remote">Public</option>
+                    </select>
+                    <button class="btn btn-dark col-12 mt-3" type="button" id="btnSubmitFeedback" aria-label="Click to submit feedback">Submit Feedback</button>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Student Profile Card-->
+      <div class="card col-12 col-md-6 col-lg-4" id="divStudentProfile" style="display:none;">
+        <div class="card-body">
+            <h1 class="text-center mb-1">Oz's Profile</h1>
+            <label for="txtStudentProfileFirstName" class="form-label">Personal Information:</label>
+            <!-- Will load in with user's info when backend added-->
+            <button class="btn btn-link col-12 mt-1" type="button" id="btnStudentLogout" aria-label="Click to sign out">Log Out</button>
+        </div>
+
+      </div>
+
     </div>
 
 
