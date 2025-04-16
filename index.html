@@ -144,10 +144,13 @@
           <!-- Main content-->
           <div class="col-12 col-md-9 p-0" id="teacherContainer">
             <!-- Header -->
-            <div class="d-flex justify-content-end align-items-center" id="teacherHeader">
+            <div class="d-flex justify-content-between align-items-center" id="teacherHeader">
+              <div>
+                <h1 class="text-light">Burchfield's Home Page</h1>
+              </div>
               <div id="teacherUser">
                 <button class="btn btn-dark mr-3" type="button" id="btnCreateCourse" aria-label="Click to create a new course ">Create New Course</button>
-                <button class="btn btn-dark" type="button" id="btnVeiwProfile" aria-label="Click to view your profile">My Profile</button>
+                <button class="btn btn-dark" type="button" id="btnTeacherProfile" aria-label="Click to view your profile">My Profile</button>
               </div>
             </div>
       
@@ -163,6 +166,16 @@
             </div>
 
           </div>
+        </div>
+      </div>
+
+      <!-- Teacher Profile Card-->
+      <div class="card col-12 col-md-6 col-lg-4" id="divTeacherProfile" style="display:none;">
+        <div class="card-body">
+            <h1 class="text-center mb-1">Burchfield's Profile</h1>
+            <label for="txtTeacherProfileFirstName" class="form-label">Personal Information:</label>
+            <!-- Will load in with user's info when backend added-->
+            <button class="btn btn-link col-12 mt-1" type="button" id="btnTeacherLogout" aria-label="Click to sign out">Log Out</button>
         </div>
       </div>
     
@@ -195,7 +208,10 @@
           <!-- Main content area (right side) -->
           <div class="col-12 col-md-9 p-0" id="studentContainer">
             <!-- Header -->
-            <div class="d-flex justify-content-end align-items-center" id="studentHeader">
+            <div class="d-flex justify-content-between align-items-center" id="studentHeader">
+              <div>
+                <h1 class="text-light">Oz's Home Page</h1>
+              </div>
               <div id="studentUser">
                 <button class="btn btn-dark" id="btnStudentProfile">My Profile</button>
               </div>

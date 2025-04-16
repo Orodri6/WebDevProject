@@ -145,6 +145,20 @@ $('#btnTeacherSwapLogin').on('click', function(){
     })
 })
 
+//Function to go to Teacher Profile
+$('#btnTeacherProfile').on('click', function(){
+    $('#divTeacherInterface').slideUp(function(){
+        $('#divTeacherProfile').slideDown()
+    })
+})
+
+//Function to go to Teacher Login from Profile
+$('#btnTeacherLogout').on('click', function(){
+    $('#divTeacherProfile').slideUp(function(){
+        $('#frmTeacherLogin').slideDown()
+    })
+})
+
 //Student Buttons
 
 //Function to swap from registration to Student login form
