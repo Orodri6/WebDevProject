@@ -144,10 +144,66 @@ $('#btnTeacherGoHome').on('click', function(){
 
 //Function to go to Teacher Interface
 $('#btnTeacherLogin').on('click', function(){
-    $('#frmTeacherLogin').slideUp(function(){
-        $('#divTeacherInterface').css('display', 'block')
-    })
-})
+    const strEmail = document.getElementById("txtTeacherLoginUsername").value.trim();
+    const strPassword = document.getElementById("txtTeacherLoginPassword").value.trim();
+
+    const regEmail = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
+    const regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    let blnError = false;
+    let strMessage = '';
+
+    if (!regEmail.test(strEmail)) {
+        blnError = true;
+        strMessage += '<p>Please enter a valid email address.</p>';
+    } 
+    if (!regPassword.test(strPassword)) {
+        blnError = true;
+        strMessage += '<p>Please enter a valid password.</p>';
+    }
+
+    if (blnError) {
+        Swal.fire({
+            title: "Oh no, you have an error!",
+            html: strMessage,
+            icon: "error"
+        });
+    } else {
+        // Send the data to the server
+        fetch('http://127.0.0.1:8000/login', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: strEmail, password: strPassword })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (data.status === "success") {
+                Swal.fire({
+                    title: "Login Successful!",
+                    icon: "success"
+                }).then(() => {
+                    $('#frmTeacherLogin').slideUp(function(){
+                        $('#divTeacherInterface').css('display', 'block');
+                    });
+                });
+            } else {
+                Swal.fire({
+                    title: "Login Failed!",
+                    text: data.message,
+                    icon: "error"
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                title: "Server Error",
+                text: "Something went wrong. Please try again later.",
+                icon: "error"
+            });
+        });
+    }
+});
 
 //Function to go to User Interface
 $('#btnTeacherRegister').on('click', function(){

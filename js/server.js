@@ -103,25 +103,36 @@ app.post('/register', (req, res, next) => {
 })
 
 //Login route
-app.post('/user', (req, res) => {
+app.post('/login', (req, res) => {
     let strEmail = req.body.email.trim().toLowerCase(); // This would correspond to the request body key
     let strPassword = req.body.password;
 
-    let strCommand = `SELECT EmailPassword FROM tblUsers WHERE UserId = ?`; // Corrected column name
+    let strCommand = `SELECT UserEmail, EmailPassword, UserRole, FirstName, LastName FROM tblUsers WHERE UserEmail = ?`;
 
     db.get(strCommand, [strEmail], (err, row) => {
+        if (err) {
+            return res.status(500).json({ status: "error", message:err.message });
+        }
+
         //Will check if the email exists
         if (!row) {
             return res.status(401).json({ status: "fail", message: "Invalid email or password" });
         }
 
         //Returns a boolean value of whether the password matches
-        const passwordMatch = bcrypt.compareSync(strPassword, row.EmailPassword);
+        //const passwordMatch = bcrypt.compareSync(strPassword, row.EmailPassword);
+        const passwordMatch = strPassword === row.EmailPassword;
         if (!passwordMatch) {
             return res.status(401).json({ status: "fail", message: "Invalid email or password" });
         }
-
-        return res.status(200).json({ status: "success", message: "Login successful" });
+        else{
+            console.log('Query result:', row);
+            return res.status(200).json({ 
+                status: "success", 
+                message: "Login successful",
+                user: row
+            });
+        }
     });
 });
 
