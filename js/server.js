@@ -102,6 +102,72 @@ app.post('/register', (req, res, next) => {
     }
 })
 
+//Retrieve socials from user
+app.post('/socials', (req, res, next) => {
+    let strUserId = uuidv4();
+    let strEmail = req.body.email.trim().toLowerCase();
+    let strMobileType = 'Mobile';
+    let strMobile = req.body.mobile
+    let strDiscordType = 'Discord';
+    let strDiscord = req.body.discord.trim();
+    let strTeamsType = 'Teams';
+    let strTeams = req.body.teams.trim();
+
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    let blnError = false;
+
+    //Email validation
+    if (!emailRegex.test(strEmail)) {
+        return res.status(400).json({ error: "You must provide a valid email address" });
+        blnError = true;
+    }
+
+    //Mobile validation
+    if (strMobile.length < 10) {
+        blnError = true;
+        return res.status(400).json({ error: "Mobile number must be at least 10 characters long" });
+    }
+    //Discord validation
+    if (strDiscord.length < 3) {
+        blnError = true;
+        return res.status(400).json({ error: "Discord name must be at least 3 characters long" });
+    }
+    //Teams validation
+    if (strTeams.length < 3) {
+        blnError = true;
+        return res.status(400).json({ error: "Teams name must be at least 3 characters long" });
+    }
+    // If validations pass
+    if(blnError == true){
+        return res.status(400).json({ error: "Validation failed" });
+    } else {
+
+    req.body.userId = strUserId;
+    
+    let strCommand = `INSERT INTO tblSocials VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+    let arrParams = [strUserId, strEmail, strMobileType, strMobile, strDiscordType, strDiscord, strTeamsType, strTeams];
+    console.log(strCommand)
+    db.run(strCommand, arrParams, function (err) {
+        if(err){
+            console.log(err)
+            res.status(400).json({
+                status:"error",
+                message:err.message
+            })
+        } else {
+            res.status(200).json({
+                status:"success"
+            })
+        }
+        })  
+    }
+    });
+
+
+
+
 //Login route
 app.post('/user', (req, res) => {
     let strEmail = req.body.email.trim().toLowerCase(); // This would correspond to the request body key
