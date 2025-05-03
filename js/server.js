@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const {v4:uuidv4} = require('uuid')
 const sqlite3 = require('sqlite3').verbose()
-//const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt')
 const intSalt = 10;
 
 const dbSource = "group_survey_project.db"
@@ -27,7 +27,7 @@ app.post('/register', (req, res, next) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const validRoles = ['teacher', 'student'];
 
-  //Email validation
+    //Email validation
     if (!emailRegex.test(strEmail)) {
         return res.status(400).json({ error: "You must provide a valid email address" });
     }
@@ -78,11 +78,10 @@ app.post('/register', (req, res, next) => {
     if(blnError == true){
         return res.status(400).json({ error: "Validation failed" });
     } else {
-    req.body.userId = strUserId;
-    //strPassword = bcrypt.hashSync(strPassword, intSalt);
-    
-    //let strCommand = `INSERT INTO tblUsers VALUES ('${strUserId}', '${strEmail}', '${strFirstName}', '${strLastName}', '${strRole}', '${strPassword}')`;
 
+    req.body.userId = strUserId;
+    strPassword = bcrypt.hashSync(strPassword, intSalt);
+    
     let strCommand = `INSERT INTO tblUsers VALUES (?, ?, ?, ?, ?, ?)`;
     let arrParams = [strUserId, strEmail, strFirstName, strLastName, strRole, strPassword];
     console.log(strCommand)
@@ -120,8 +119,8 @@ app.post('/login', (req, res) => {
         }
 
         //Returns a boolean value of whether the password matches
-        //const passwordMatch = bcrypt.compareSync(strPassword, row.EmailPassword);
-        const passwordMatch = strPassword === row.EmailPassword;
+        const passwordMatch = bcrypt.compareSync(strPassword, row.EmailPassword);
+
         if (!passwordMatch) {
             return res.status(401).json({ status: "fail", message: "Invalid email or password" });
         }
