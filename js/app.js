@@ -113,6 +113,15 @@ $('#btnStudentRegistered').on('click', function(){
             $('#frmStudentRegister').slideUp(function () {
                 $('#frmStudentLogin').slideDown();
             });
+
+            // If no errors, send the data to the server
+            fetch('http://127.0.0.1:8000/register',{
+                method: 'POST',
+                headers: {"Content-Type": "application/json"}, body:JSON.stringify({email:strEmail,firstName:strFirstName,lastName:strLastName,role:"student", password:strPassword})
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error',error))
         });
     }
 })
