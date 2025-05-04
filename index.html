@@ -84,12 +84,17 @@
         <div class="card-body">
             <h1 class="text-center mb-1">Create a Account</h1>
             <h6 class="text-center mb-4">Please fill out the form below</h6>
-            <label for="txtTeacherRegisterFirstName" class="form-label">Personal Information</label>
+
+            <!-- Personal Info -->
+            <label for="txtTeacherRegisterPersonalInfo" class="form-label">Personal Information</label>
             <input id="txtTeacherRegisterFirstName" class="form-control" type="text" placeholder="First Name" aria-label="Enter first name">
             <input id="txtTeacherRegisterLastName" class="form-control mt-2 mb-3" type="text" placeholder="Last Name" aria-label="Enter last name">
+
+            <!-- Account Info -->
             <label for="txtTeacherRegisterUsername" class="form-label">Account Information</label>
             <input id="txtTeacherRegisterUsername" class="form-control" type="email" placeholder="Email" aria-label="Enter email">
             <input id="txtTeacherRegisterPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="Enter password">
+
             <button class="btn btn-dark col-12 mt-3" type="button" id="btnTeacherRegistered" aria-label="Click to register">Register</button>
             <button class="btn btn-link col-12 mt2" type="button" id="btnTeacherSwapLogin" aria-label="Click to go back to login">Back to Login</button>
         </div>
@@ -100,12 +105,23 @@
         <div class="card-body">
             <h1 class="text-center mb-1">Create a Account</h1>
             <h6 class="text-center mb-4">Please fill out the form below</h6>
+
+            <!-- Personal Info -->
             <label for="txtStudentRegisterFirstName" class="form-label">Personal Information</label>
             <input id="txtStudentRegisterFirstName" class="form-control" type="text" placeholder="First Name" aria-label="Enter first name">
             <input id="txtStudentRegisterLastName" class="form-control mt-2 mb-3" type="text" placeholder="Last Name" aria-label="Enter last name">
+
+            <!-- Account Info -->
             <label for="txtStudentRegisterUsername" class="form-label">Account Information</label>
             <input id="txtStudentRegisterUsername" class="form-control" type="email" placeholder="Email" aria-label="Enter email">
-            <input id="txtStudentRegisterPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="Enter password">
+            <input id="txtStudentRegisterPassword" class="form-control mt-2 mb-3" type="password" placeholder="Password" aria-label="Enter password">
+
+            <!-- Contact Info -->
+            <label for="txtStudentRegisterPhone" class="form-label ">Contact Information</label>
+            <input id="txtStudentRegisterPhone" class="form-control" type="text" placeholder="Phone Number" aria-label="Enter phone number">
+            <input id="txtStudentRegisterDiscord" class="form-control mt-2" type="text" placeholder="Discord Username" aria-label="Enter discord username">
+            <input id="txtStudentRegisterTeams" class="form-control mt-2 mb-3" type="text" placeholder="Teams Username" aria-label="Enter teams username">
+
             <button class="btn btn-dark col-12 mt-3" type="button" id="btnStudentRegistered" aria-label="Click to register">Register</button>
             <button class="btn btn-link col-12 mt2" type="button" id="btnStudentSwapLogin" aria-label="Click to go back to login">Back to Login</button>
         </div>
@@ -157,9 +173,129 @@
             <!-- Cards -->
             <div id="teacherContent" class="container mt-5 pt-4">
               <div class="row justify-content-center">
-                <div class="card col-12 col-md-10 col-lg-8">
+                <!-- View Courses Card -->
+                <div class="card col-12 col-md-10 col-lg-8" id="cardViewCourses">
                   <div class="card-body">
-                    <h1 class="text-center mb-1">Courses</h1>
+                    <h1 class="text-center mb-4">Your Courses</h1>
+                    <div id="coursesList">
+                      <!-- Courses will be loaded here dynamically -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Create Teams Card -->
+                <div class="card col-12 col-md-10 col-lg-8" id="cardCreateTeam" style="display:none;">
+                  <div class="card-body">
+                    <h1 class="text-center mb-4">Create Teams</h1>
+                    <div class="mb-3">
+                      <label for="cboSelectCourse" class="form-label">Select Course</label>
+                      <select class="form-control" id="cboSelectCourse">
+                        <option value="">Choose a Course</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="txtTeamName" class="form-label">Team Name</label>
+                      <input type="text" class="form-control" id="txtTeamName" placeholder="Enter team name">
+                    </div>
+                    <div class="mb-3">
+                      <label for="txtTeamMembers" class="form-label">Team Members</label>
+                      <textarea class="form-control" id="txtTeamMembers" rows="3" placeholder="Enter student emails (one per line)"></textarea>
+                    </div>
+                    <button class="btn btn-dark col-12" type="button" id="btnSubmitTeam">Create Team</button>
+                  </div>
+                </div>
+
+                <!-- Create Reviews Card -->
+                <div class="card col-12 col-md-10 col-lg-8" id="cardCreateReview" style="display:none;">
+                  <div class="card-body">
+                    <h1 class="text-center mb-4">Create Review</h1>
+                    <div class="mb-3">
+                      <label for="cboReviewCourse" class="form-label">Select Course</label>
+                      <select class="form-control" id="cboReviewCourse">
+                        <option value="">Choose a Course</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="txtReviewTitle" class="form-label">Review Title</label>
+                      <input type="text" class="form-control" id="txtReviewTitle" placeholder="Enter review title">
+                    </div>
+                    <div class="mb-3">
+                      <label for="txtReviewDescription" class="form-label">Description</label>
+                      <textarea class="form-control" id="txtReviewDescription" rows="3" placeholder="Enter review description"></textarea>
+                    </div>
+                    <button class="btn btn-dark col-12" type="button" id="btnSubmitReview">Create Review</button>
+                  </div>
+                </div>
+
+                <!-- Schedule Reviews Card -->
+                <div class="card col-12 col-md-10 col-lg-8" id="cardScheduleReview" style="display:none;">
+                  <div class="card-body">
+                    <h1 class="text-center mb-4">Schedule Reviews</h1>
+                    <div class="mb-3">
+                      <label for="cboScheduleCourse" class="form-label">Select Course</label>
+                      <select class="form-control" id="cboScheduleCourse">
+                        <option value="">Choose a Course</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="cboSelectReview" class="form-label">Select Review</label>
+                      <select class="form-control" id="cboSelectReview">
+                        <option value="">Choose a Review</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="dateReviewDate" class="form-label">Review Date</label>
+                      <input type="date" class="form-control" id="dateReviewDate">
+                    </div>
+                    <button class="btn btn-dark col-12" type="button" id="btnSubmitSchedule">Schedule Review</button>
+                  </div>
+                </div>
+
+                <!-- View Reviews Card -->
+                <div class="card col-12 col-md-10 col-lg-8" id="cardViewReviews" style="display:none;">
+                  <div class="card-body">
+                    <h1 class="text-center mb-4">View Reviews</h1>
+                    <div class="mb-3">
+                      <label for="cboViewReviewsCourse" class="form-label">Select Course</label>
+                      <select class="form-control" id="cboViewReviewsCourse">
+                        <option value="">Choose a Course</option>
+                      </select>
+                    </div>
+                    <div id="reviewsList">
+                      <!-- Reviews will be loaded here dynamically -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- View Reports Card -->
+                <div class="card col-12 col-md-10 col-lg-8" id="cardViewReports" style="display:none;">
+                  <div class="card-body">
+                    <h1 class="text-center mb-4">View Reports</h1>
+                    <div class="mb-3">
+                      <label for="cboReportsCourse" class="form-label">Select Course</label>
+                      <select class="form-control" id="cboReportsCourse">
+                        <option value="">Choose a Course</option>
+                      </select>
+                    </div>
+                    <div id="reportsList">
+                      <!-- Reports will be loaded here dynamically -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Create Course Card -->
+                <div class="card col-12 col-md-10 col-lg-8" id="cardCreateCourse" style="display:none;">
+                  <div class="card-body">
+                    <h1 class="text-center mb-4">Create New Course</h1>
+                    <div class="mb-3">
+                      <label for="txtCourseName" class="form-label">Course Name</label>
+                      <input type="text" class="form-control" id="txtCourseName" placeholder="Enter course name">
+                    </div>
+                    <div class="mb-3">
+                      <label for="txtCourseDescription" class="form-label">Course Description</label>
+                      <textarea class="form-control" id="txtCourseDescription" rows="3" placeholder="Enter course description"></textarea>
+                    </div>
+                    <button class="btn btn-dark col-12" type="button" id="btnSubmitCourse">Create Course</button>
                   </div>
                 </div>
               </div>
@@ -167,7 +303,7 @@
 
           </div>
         </div>
-      </div>
+      </div>            
 
       <!-- Teacher Profile Card-->
       <div class="card col-12 col-md-6 col-lg-4" id="divTeacherProfile" style="display:none;">
