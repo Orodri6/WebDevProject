@@ -85,17 +85,12 @@
         <div class="card-body">
             <h1 class="text-center mb-1">Create a Account</h1>
             <h6 class="text-center mb-4">Please fill out the form below</h6>
-
-            <!-- Personal Info -->
-            <label for="txtTeacherRegisterPersonalInfo" class="form-label">Personal Information</label>
+            <label for="txtTeacherRegisterFirstName" class="form-label">Personal Information</label>
             <input id="txtTeacherRegisterFirstName" class="form-control" type="text" placeholder="First Name" aria-label="Enter first name">
             <input id="txtTeacherRegisterLastName" class="form-control mt-2 mb-3" type="text" placeholder="Last Name" aria-label="Enter last name">
-
-            <!-- Account Info -->
             <label for="txtTeacherRegisterUsername" class="form-label">Account Information</label>
             <input id="txtTeacherRegisterUsername" class="form-control" type="email" placeholder="Email" aria-label="Enter email">
             <input id="txtTeacherRegisterPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="Enter password">
-
             <button class="btn btn-dark col-12 mt-3" type="button" id="btnTeacherRegistered" aria-label="Click to register">Register</button>
             <button class="btn btn-link col-12 mt2" type="button" id="btnTeacherSwapLogin" aria-label="Click to go back to login">Back to Login</button>
         </div>
@@ -106,29 +101,19 @@
         <div class="card-body">
             <h1 class="text-center mb-1">Create a Account</h1>
             <h6 class="text-center mb-4">Please fill out the form below</h6>
-
-            <!-- Personal Info -->
             <label for="txtStudentRegisterFirstName" class="form-label">Personal Information</label>
             <input id="txtStudentRegisterFirstName" class="form-control" type="text" placeholder="First Name" aria-label="Enter first name">
             <input id="txtStudentRegisterLastName" class="form-control mt-2 mb-3" type="text" placeholder="Last Name" aria-label="Enter last name">
-
-            <!-- Account Info -->
             <label for="txtStudentRegisterUsername" class="form-label">Account Information</label>
             <input id="txtStudentRegisterUsername" class="form-control" type="email" placeholder="Email" aria-label="Enter email">
-            <input id="txtStudentRegisterPassword" class="form-control mt-2 mb-3" type="password" placeholder="Password" aria-label="Enter password">
-
-            <!-- Contact Info -->
-            <label for="txtStudentRegisterPhone" class="form-label ">Contact Information</label>
-            <input id="txtStudentRegisterPhone" class="form-control" type="text" placeholder="Phone Number" aria-label="Enter phone number">
-            <input id="txtStudentRegisterDiscord" class="form-control mt-2" type="text" placeholder="Discord Username" aria-label="Enter discord username">
-            <input id="txtStudentRegisterTeams" class="form-control mt-2 mb-3" type="text" placeholder="Teams Username" aria-label="Enter teams username">
-
+            <input id="txtStudentRegisterPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="Enter password">
             <button class="btn btn-dark col-12 mt-3" type="button" id="btnStudentRegistered" aria-label="Click to register">Register</button>
             <button class="btn btn-link col-12 mt2" type="button" id="btnStudentSwapLogin" aria-label="Click to go back to login">Back to Login</button>
         </div>
     </form>
 
     <!-- Teacher Interface -->
+
     <div class="position-fixed top-0 start-0 w-100" style="z-index: 100;">
         <form id="frmTeacherInterface" style="display:none;">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">  
@@ -393,8 +378,7 @@
                             <button type="button" class="btn btn-primary" id="btnSaveGroup">Add Group</button>
                         </div>
                     </div>
-                </div>
-            </div>
+
             
             <!-- Add custom CSS for modal z-index -->
             <style>
@@ -432,8 +416,10 @@
         </form>
     </div>
 
+
     <!-- Teacher Profile Card-->
     <div class="card col-12 col-md-6 col-lg-4" id="divTeacherProfile" style="display:none;">
+
         <div class="card-body">
             <h1 class="text-center mb-1">Teacher's Profile</h1>
             <label for="txtTeacherProfileFirstName" class="form-label">Personal Information:</label>
