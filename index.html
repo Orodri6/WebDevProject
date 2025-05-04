@@ -146,7 +146,7 @@
             <!-- Header -->
             <div class="d-flex justify-content-between align-items-center" id="teacherHeader">
               <div>
-                <h1 class="text-light">Burchfield's Home Page</h1>
+                <h1 class="text-light" id="teacherDashboardName">Teacher's Home Page</h1>
               </div>
               <div id="teacherUser">
                 <button class="btn btn-dark mr-3" type="button" id="btnCreateCourse" aria-label="Click to create a new course ">Create New Course</button>
@@ -172,9 +172,13 @@
       <!-- Teacher Profile Card-->
       <div class="card col-12 col-md-6 col-lg-4" id="divTeacherProfile" style="display:none;">
         <div class="card-body">
-            <h1 class="text-center mb-1">Burchfield's Profile</h1>
-            <label for="txtTeacherProfileFirstName" class="form-label">Personal Information:</label>
-            <!-- Will load in with user's info when backend added-->
+            <h1 class="text-center mb-4" id="teacherProfileName">Teacher's Profile</h1>
+            <div class="mb-3">
+                <label class="form-label">Personal Information:</label>
+                <div class="form-control mb-2" id="teacherProfileEmail"></div>
+                <div class="form-control mb-2" id="teacherProfileFirstName"></div>
+                <div class="form-control mb-2" id="teacherProfileLastName"></div>
+            </div>
             <button class="btn btn-link col-12 mt-1" type="button" id="btnTeacherLogout" aria-label="Click to sign out">Log Out</button>
         </div>
       </div>
@@ -210,7 +214,7 @@
             <!-- Header -->
             <div class="d-flex justify-content-between align-items-center" id="studentHeader">
               <div>
-                <h1 class="text-light">Oz's Home Page</h1>
+                <h1 class="text-light" id="studentDashboardName">Student's Home Page</h1>
               </div>
               <div id="studentUser">
                 <button class="btn btn-dark" id="btnStudentProfile">My Profile</button>
@@ -247,12 +251,15 @@
       <!-- Student Profile Card-->
       <div class="card col-12 col-md-6 col-lg-4" id="divStudentProfile" style="display:none;">
         <div class="card-body">
-            <h1 class="text-center mb-1">Oz's Profile</h1>
-            <label for="txtStudentProfileFirstName" class="form-label">Personal Information:</label>
-            <!-- Will load in with user's info when backend added-->
+            <h1 class="text-center mb-4" id="studentProfileName">Student's Profile</h1>
+            <div class="mb-3">
+                <label class="form-label">Personal Information:</label>
+                <div class="form-control mb-2" id="studentProfileEmail"></div>
+                <div class="form-control mb-2" id="studentProfileFirstName"></div>
+                <div class="form-control mb-2" id="studentProfileLastName"></div>
+            </div>
             <button class="btn btn-link col-12 mt-1" type="button" id="btnStudentLogout" aria-label="Click to sign out">Log Out</button>
         </div>
-
       </div>
 
     </div>

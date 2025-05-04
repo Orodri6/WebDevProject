@@ -36,32 +36,57 @@ $('#btnTeacherRegistered').on('click', function(){
             html: strMessage,
             icon: "error"
         });
-    }
-
-    if (blnError) {
-        Swal.fire({
-            title: "Oh no, you have an error!",
-            html: strMessage,
-            icon: "error"
-        });
     } else {
-        Swal.fire({
-            title: "Registration Successful!",
-            icon: "success"
-        }).then(() => {
-            // Only switch screens after success
-            $('#frmTeacherRegister').slideUp(function () {
-                $('#frmTeacherLogin').slideDown();
-            });
-
-            // If no errors, send the data to the server
-            fetch('http://127.0.0.1:8000/register',{
-                method: 'POST',
-                headers: {"Content-Type": "application/json"}, body:JSON.stringify({email:strEmail,firstName:strFirstName,lastName:strLastName,role:"teacher", password:strPassword})
+        // Send the data to the server
+        fetch('http://127.0.0.1:8000/register',{
+            method: 'POST',
+            headers: {"Content-Type": "application/json"}, 
+            body: JSON.stringify({
+                email: strEmail,
+                firstName: strFirstName,
+                lastName: strLastName,
+                role: "teacher", 
+                password: strPassword
             })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error',error))
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                // Store user data in localStorage
+                const userData = {
+                    UserEmail: strEmail,
+                    FirstName: strFirstName,
+                    LastName: strLastName,
+                    UserRole: "teacher"
+                };
+                localStorage.setItem('userData', JSON.stringify(userData));
+                
+                // Update dashboard name
+                $('#teacherDashboardName').text(`${strFirstName}'s Home Page`);
+                
+                Swal.fire({
+                    title: "Registration Successful!",
+                    icon: "success"
+                }).then(() => {
+                    $('#frmTeacherRegister').slideUp(function () {
+                        $('#divTeacherInterface').slideDown();
+                    });
+                });
+            } else {
+                Swal.fire({
+                    title: "Registration Failed!",
+                    text: data.message || "Something went wrong",
+                    icon: "error"
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                title: "Server Error",
+                text: "Something went wrong. Please try again later.",
+                icon: "error"
+            });
         });
     }
 })
@@ -105,23 +130,56 @@ $('#btnStudentRegistered').on('click', function(){
             icon: "error"
         });
     } else {
-        Swal.fire({
-            title: "Registration Successful!",
-            icon: "success"
-        }).then(() => {
-            // Only switch screens after success
-            $('#frmStudentRegister').slideUp(function () {
-                $('#frmStudentLogin').slideDown();
-            });
-
-            // If no errors, send the data to the server
-            fetch('http://127.0.0.1:8000/register',{
-                method: 'POST',
-                headers: {"Content-Type": "application/json"}, body:JSON.stringify({email:strEmail,firstName:strFirstName,lastName:strLastName,role:"student", password:strPassword})
+        // Send the data to the server
+        fetch('http://127.0.0.1:8000/register', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+                email: strEmail, 
+                firstName: strFirstName, 
+                lastName: strLastName, 
+                role: "student", 
+                password: strPassword 
             })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error',error))
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                // Store user data in localStorage
+                const userData = {
+                    UserEmail: strEmail,
+                    FirstName: strFirstName,
+                    LastName: strLastName,
+                    UserRole: "student"
+                };
+                localStorage.setItem('userData', JSON.stringify(userData));
+                
+                // Update dashboard name
+                $('#studentDashboardName').text(`${strFirstName}'s Home Page`);
+                
+                Swal.fire({
+                    title: "Registration Successful!",
+                    icon: "success"
+                }).then(() => {
+                    $('#frmStudentRegister').slideUp(function(){
+                        $('#divStudentInterface').slideDown();
+                    });
+                });
+            } else {
+                Swal.fire({
+                    title: "Registration Failed!",
+                    text: data.message || "Something went wrong",
+                    icon: "error"
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                title: "Server Error",
+                text: "Something went wrong. Please try again later.",
+                icon: "error"
+            });
         });
     }
 })
@@ -178,6 +236,12 @@ $('#btnTeacherLogin').on('click', function(){
         .then(data => {
             console.log(data);
             if (data.status === "success") {
+                // Store user data in localStorage
+                localStorage.setItem('userData', JSON.stringify(data.user));
+                
+                // Update dashboard name
+                $('#teacherDashboardName').text(`${data.user.FirstName}'s Home Page`);
+                
                 Swal.fire({
                     title: "Login Successful!",
                     icon: "success"
@@ -221,6 +285,17 @@ $('#btnTeacherSwapLogin').on('click', function(){
 
 //Function to go to Teacher Profile
 $('#btnTeacherProfile').on('click', function(){
+    // Get user data from localStorage
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    
+    if (userData) {
+        // Update profile information
+        $('#teacherProfileName').text(`${userData.FirstName}'s Profile`);
+        $('#teacherProfileEmail').text(`Email: ${userData.UserEmail}`);
+        $('#teacherProfileFirstName').text(`First Name: ${userData.FirstName}`);
+        $('#teacherProfileLastName').text(`Last Name: ${userData.LastName}`);
+    }
+    
     $('#divTeacherInterface').slideUp(function(){
         $('#divTeacherProfile').slideDown()
     })
@@ -228,6 +303,9 @@ $('#btnTeacherProfile').on('click', function(){
 
 //Function to go to Teacher Login from Profile
 $('#btnTeacherLogout').on('click', function(){
+    // Clear user data from localStorage
+    localStorage.removeItem('userData');
+    
     $('#divTeacherProfile').slideUp(function(){
         $('#frmTeacherLogin').slideDown()
     })
@@ -285,6 +363,12 @@ $('#btnStudentLogin').on('click', function(){
         .then(data => {
             console.log(data);
             if (data.status === "success") {
+                // Store user data in localStorage
+                localStorage.setItem('userData', JSON.stringify(data.user));
+                
+                // Update dashboard name
+                $('#studentDashboardName').text(`${data.user.FirstName}'s Home Page`);
+                
                 Swal.fire({
                     title: "Login Successful!",
                     icon: "success"
@@ -328,6 +412,17 @@ $('#btnStudentSwapLogin').on('click', function(){
 
 //Function to go to Student Profile
 $('#btnStudentProfile').on('click', function(){
+    // Get user data from localStorage
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    
+    if (userData) {
+        // Update profile information
+        $('#studentProfileName').text(`${userData.FirstName}'s Profile`);
+        $('#studentProfileEmail').text(`Email: ${userData.UserEmail}`);
+        $('#studentProfileFirstName').text(`First Name: ${userData.FirstName}`);
+        $('#studentProfileLastName').text(`Last Name: ${userData.LastName}`);
+    }
+    
     $('#divStudentInterface').slideUp(function(){
         $('#divStudentProfile').slideDown()
     })
@@ -335,6 +430,9 @@ $('#btnStudentProfile').on('click', function(){
 
 //Function to go to Student Login from Profile
 $('#btnStudentLogout').on('click', function(){
+    // Clear user data from localStorage
+    localStorage.removeItem('userData');
+    
     $('#divStudentProfile').slideUp(function(){
         $('#frmStudentLogin').slideDown()
     })
