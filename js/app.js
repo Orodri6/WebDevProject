@@ -362,10 +362,3 @@ document.getElementById('btnStudentProfile').addEventListener('click', function(
     divStudentProfile.style.display = 'block';
 });
 
-// Function to go to Student Login from Profile
-document.getElementById('btnStudentLogout').addEventListener('click', function() {
-    const divStudentProfile = document.getElementById('divStudentProfile');
-    const frmStudentLogin = document.getElementById('frmStudentLogin');
-    divStudentProfile.style.display = 'none';
-    frmStudentLogin.style.display = 'block';
-});
